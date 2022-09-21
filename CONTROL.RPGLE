@@ -13,6 +13,8 @@
       parId like(wIdT);
      end-pi;
 
+//Estructures
+
      dcl-Ds DsUsuario likeDs(DsUsuario);
 
 
