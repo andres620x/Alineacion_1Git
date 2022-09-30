@@ -1,3 +1,4 @@
+**free
 
     /copy COPY
    
@@ -17,9 +18,12 @@
 
      dcl-Ds DsUsuario likeDs(DsUsuario);
 
+//Proces
 
      DsUsuario.Nombre=InNombre;
      DsUsuario.Id=InId;
+     DsUsuario.wResultado=FnFormatoFecha(%Date());
+     DsUsuario.Tiempo=FnFormatoTiempo(%Time());
 
     prInsertar(DsUsuario);
 
