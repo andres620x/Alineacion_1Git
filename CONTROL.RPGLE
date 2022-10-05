@@ -1,31 +1,31 @@
 **free
 
-    /copy COPY
-   
-    dcl-pr PrEntrada;
-      parNombre like(wNombreT);
-      parId like(wIdT);
-     end-pr;
 
+       dcl-Ds DsUsuarioT Qualified Template;
+         Nombre like (wNombreT);
+         Id like(wIdT);
+         Fecha like(wFechaT);
+         Tiempo like(wTiempoT);
+       end-Ds;
 
-    dcl-Proc PrEntrada Export;
-     dcl-pi *n; 
-      parNombre like(wNombreT);
-      parId like(wIdT);
-     end-pi;
+       dcl-s wNombreT char(10) Template;
+       dcl-s wIdT int(5) Template; 
+       dcl-s wMsgIdT char(7) Template;
+       dcl-s wFechaT varchar(100) Template; 
+       dcl-s wTiempoT varchar(100) Template;
+       dcl-s wSqlStateT char(5) Template;
 
-//Estructures
+ //prototypes
+ 
+       dcl-pr PrInsertar;
+         parUsuario likeDs(DsUsuarioT);
+         parSqlState like(wSqlStateT);
+       end-pr;
 
-     dcl-Ds DsUsuario likeDs(DsUsuario);
+       dcl-pr FnFormatoFecha like (wFechaT);
+         parDate Date(*Iso)Const;
+       end-pr;
 
-//Proces
-
-     DsUsuario.Nombre=InNombre;
-     DsUsuario.Id=InId;
-     DsUsuario.wResultado=FnFormatoFecha(%Date());
-     DsUsuario.Tiempo=FnFormatoTiempo(%Time());
-
-    prInsertar(DsUsuario);
-
-
-    end-Proc; 
+       dcl-pr FnFormatoTiempo like(wTiempoT);
+          InTime Time(*ISO) Const;
+       end-pr;
